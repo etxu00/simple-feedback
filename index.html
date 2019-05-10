@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+	<meta charset="UTF-8">
+	<title>Feedback</title>
+	<style>
+		:root {
+			--color-primary: royalblue;
+			--color-secundary: #673ab7;
+			--color-black: #212121;
+			--color-blue: #1E88E5;
+			--color-red: #E53935;
+			--color-green: #4CAF50;
+			--color-yellow: #ffc107;
+		}
+		body {
+			margin: 0;
+			font-family: 'Arial', sans-serif;
+			color: var(--color-black);
+		}
+		
+		.container_feedback_elements.bottom {
+			bottom: 1rem;
+			margin: 0 auto;
+		}
+		
+		.container_feedback_elements.top {
+			top: 1rem;
+			margin: 0 auto;
+		}
+
+		.container_feedback_elements.right {
+			right: 1rem;
+		}
+
+		.container_feedback_elements.left {
+			left: 1rem;
+		}
+		
+		.container_feedback_elements {
+		    position: fixed;
+		}
+
+		.feedback {
+		    color: white;
+		    padding: 1rem;
+		    display: flex;
+		    justify-content: space-between;
+		    align-items: center;
+		    flex-direction: row;
+		    position: relative;
+		}
+
+		.elment.background {
+		    position: absolute;
+		    width: 100%;
+		    height: 100%;
+		    z-index: -1;
+		    overflow: hidden;
+		    border-radius: 3px;
+		    top: 0;
+		    left: 0;
+		    right: 0;
+		    bottom: 0;
+		}
+
+		.container_config {
+		    position: absolute;
+		    top: 0;
+		    bottom: 0;
+		    left: 100%;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    padding: 1rem;
+		    cursor: pointer;
+		    opacity: 0;
+		    transform: translateX(-100%);
+		    z-index: -2;
+		    transition: transform .3s ease-in-out, opacity .2s ease-in-out;
+		    overflow: hidden;
+		    border-radius: 0 3px 3px 0;
+		}
+
+		.container_config:hover {
+
+		}
+
+		.feedback:hover .container_config {
+		    opacity: 1;
+		    transform: translateX(0%);
+		    transition: transform .3s ease-in-out 1s;
+		}
+
+		.elment.message {
+		    margin: 0 1rem;
+		}
+
+		.container_config > * {
+		    animation: show 5s linear infinite;
+		    z-index: 2;
+		}
+
+		@keyframes show {
+		    from {
+		        transform: rotate(0deg)
+		    }
+		    to {
+		        transform: rotate(360deg)
+		    }
+		}
+
+		.container_config:after {
+		    background: rgba(255, 255, 255, 0.75);
+		    transition: .15s ease-in-out .3s;
+		}
+		.container_config:before {
+		    background: var(--color-black);
+		    transition: .3s ease-in-out;
+		}
+
+		.container_config:after,
+		.container_config:before {
+		    content: '';
+		    display: block;
+		    width: 0;
+		    height: 0;
+		    position: absolute;
+		    border-radius: 50%;
+		}
+
+		.container_config:hover:after {
+		    width: 50%;
+		    height: 50%;
+		}
+
+		.container_config:hover:before {
+		    width: 150%;
+		    height: 150%;
+		}
+
+		.feedback.ok .elment.background .color,
+		.feedback.ok .container_icon:before {
+		    background: var(--color-green);
+		}
+
+		.feedback.error .elment.background .color,
+		.feedback.error .container_icon:before {
+		    background: var(--color-red);
+		}
+
+		.feedback.info .elment.background .color,
+		.feedback.info .container_icon:before {
+		    background: var(--color-blue);
+		}
+
+		.feedback.warning .elment.background .color,
+		.feedback.warning .container_icon:before {
+		    background: #ffc107;
+		}
+
+		.container_icon:before {
+		    content: '';
+		    position: absolute;
+		    width: 1000%;
+		    padding-top: 1000%;
+		    transform: translate(-50%, -50%) scale(2);
+		    top: 50%;
+		    left: 50%;
+		    border-radius: 50%;
+		    z-index: 0;
+		    transition: .3s linear .25s;
+		    background: var(--color-primary);
+		}
+
+		.container_icon {
+		    position: relative;
+		}
+
+		.container_icon > * {
+		    z-index: 10;
+		}
+
+		.feedback.on .container_icon:before {
+		    width: 0;
+		    padding-top: 0;
+		    transform: translate(-50%, -50%) scale(1);
+		    transition: .3s linear;
+		}
+
+		.elment.background .color {
+		    content: '';
+		    width: 0;
+		    padding-top: 0;
+		    background: var(--color-primary);
+		    position: absolute;
+		    top: 50%;
+		    border-radius: 50%;
+		    transform: translate(-50%,-50%);
+		    left: 23px;
+		    transition: .3s, background .3s linear 0s;
+		}
+
+		.feedback.on .elment.background .color {
+		    width: calc(200% - 2rem);
+		    padding-top: calc(200% - 2rem);
+		    background: #424242;
+		    transition: width .3s linear .15s, padding-top .3s linear .15s, background .5s linear 1s;
+		}
+
+		.feedback.on .elment.background .time_bar {
+		    width: 100%;
+		    transition: width 5s linear 2s;
+		}
+
+		.feedback:hover .elment.background .time_bar {
+		    width: 100% !important;
+		    transition: none !important;
+		}
+
+		.elment.background .time_bar {
+		    content: '';
+		    position: absolute;
+		    width: 0%;
+		    background: var(--color-black);
+		    height: 100%;
+		    top: 0;
+		    left: 0;
+		    bottom: 0;
+		}
+
+		.feedback.on.off {
+		    opacity: 1;
+		    transition: .3s cubic-bezier(0, -1.3, 0.91, 0.61);
+		    transform: translateY(calc(100% + 2rem));
+		}
+		.feedback:hover .container_config:hover + .background {
+		    border-radius: 3px 0 0 3px;
+		}
+	</style>
+</head>
+<body>
+	<button type="button" id="btn_show">Ver</button>
+	<button type="button" id="btn_hide">Ocultar</button>
+	<button type="button" id="btn_error">error</button>
+	<button type="button" id="btn_info">info</button>
+	<button type="button" id="btn_warning">warning</button>
+	<button type="button" id="btn_ok">ok</button>
+
+	<div class="container_feedback_elements bottom left">
+		<div id="feedback" class="feedback">
+			<div class="container_icon">
+				<img src="https://img.icons8.com/material-rounded/24/ffffff/checkmark.png">
+			</div>
+			<div class="elment message">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			</div>
+			<div class="container_closed">
+				<img src="https://img.icons8.com/material-rounded/24/ffffff/delete-sign.png">
+			</div>
+			<div class="container_config">
+				<img src="https://img.icons8.com/material-rounded/24/212121/settings.png">
+			</div>
+			<div class="elment background">
+				<div class="status"></div>
+				<div class="color"></div>
+				<div class="time_bar"></div>
+			</div>
+		</div>
+	</div>
+	<script>
+
+		if (document.getElementById('feedback') == null) {
+			let $htmlFeedback = '<div class="container_feedback_elements bottom left">'+
+									'<div id="feedback" class="feedback">'+
+										'<div class="container_icon">'+
+											'<img src="https://img.icons8.com/material-rounded/24/ffffff/checkmark.png">'+
+										'</div>'+
+										'<div class="elment message">'+
+											'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'+
+										'</div>'+
+										'<div class="container_closed">'+
+											'<img src="https://img.icons8.com/material-rounded/24/ffffff/delete-sign.png">'+
+										'</div>'+
+										'<div class="container_config">'+
+											'<img src="https://img.icons8.com/material-rounded/24/212121/settings.png">'+
+										'</div>'+
+										'<div class="elment background">'+
+											'<div class="status"></div>'+
+											'<div class="color"></div>'+
+											'<div class="time_bar"></div>'+
+										'</div>'+
+									'</div>'+
+								'</div>'
+		}
+
+		// Function to add event listener to t
+		var $feedback   = document.querySelector("#feedback")
+		var $btnShow    = document.querySelector("#btn_show")
+		var $btnError   = document.querySelector("#btn_error")
+		var $btnInfo    = document.querySelector("#btn_info")
+		var $btnWarning = document.querySelector("#btn_warning")
+		var $btnOk      = document.querySelector("#btn_ok")
+		var $btnHide    = document.querySelector("#btn_hide")
+
+		function on() {
+			$feedback.classList.toggle('on')
+		}
+
+		function load() {
+			$btnShow.addEventListener("click", on, false)
+			$btnShow.addEventListener("click", function() {
+				$feedback.classList.toggle('show')
+			}, false)
+			$btnError.addEventListener("click", function() {
+				$feedback.classList.toggle('error')
+			}, false)
+			$btnInfo.addEventListener("click", function() {
+				$feedback.classList.toggle('info')
+			}, false)
+			$btnWarning.addEventListener("click", function() {
+				$feedback.classList.toggle('warning')
+			}, false)
+			$btnOk.addEventListener("click", function() {
+				$feedback.classList.toggle('ok')
+			}, false)
+			$btnHide.addEventListener("click", function() {
+				$feedback.classList.toggle('off')
+			}, false)
+		}
+
+		document.addEventListener("DOMContentLoaded", load, false)
+	</script>
+</body>
+</html>
