@@ -1,0 +1,258 @@
+@import 'nib'
+:root
+  --color-black     #212121
+  --color-blue      #1E88E5
+  --color-green     #4CAF50
+  --color-primary   royalblue
+  --color-red       #E53935
+  --color-white     white
+  --color-secundary #673ab7
+  --color-yellow    #ffc107
+body
+  color       var(--color-black)
+  font-family 'Arial', sans-serif
+  margin      0
+.container_feedback_elements
+  position   fixed
+  box-sizing border-box !important
+  &.bottom
+    bottom 1rem
+    margin 0 auto
+  &.left
+    left 1rem
+  &.right
+    right 1rem
+  &.top
+    margin 0 auto
+    top 1rem
+  *
+    box-sizing            border-box !important
+  .feedback
+    align-items           center
+    color                 var(--color-white)
+    display               flex
+    flex-direction        row
+    justify-content       space-between
+    padding               1rem
+    position              relative
+    &.hover
+      + .container_feedback_config
+        bottom            calc(100% + 16px)
+        opacity           1
+        visibility        visible
+    &.hover
+    &:hover
+      .container_config
+        opacity           1
+        transform         translateX(0%)
+        transition        transform .3s ease-in-out 1s
+        &:hover
+        &.hover
+          + .background
+            border-radius 3px 0 0 3px
+      .element
+        &.background
+          .time_bar
+            width         100% !important
+            transition    none !important
+    &.error
+      .container_icon
+        &:before
+          background      var(--color-red)
+      .element
+        &.background
+          .color
+            background    var(--color-red)
+    &.info
+      .container_icon
+        &:before
+          background      var(--color-blue)
+      .element
+        &.background
+          .color
+            background    var(--color-blue)
+    &.ok
+      .container_icon
+        &:before
+          background      var(--color-green)
+      .element
+        &.background
+          .color
+            background    var(--color-green)
+          .time_bar
+            width         100%
+            transition    width 5s linear 2s
+    &.on
+      &.off
+        opacity           1
+        transform         translateY(calc(100% + 2rem))
+        transition        3s cubic-bezier(0, -1.3, 0.91, 0.61)
+      .container_icon
+        &:before
+          padding-top     0
+          transform       translate(-50%, -50%) scale(1)
+          transition      .3s linear
+          width           0
+      .element
+        &.background
+          .color
+            background    #424242
+            padding-top   calc(200% - 2rem)
+            transition    width .3s linear .15s, padding-top .3s linear .15s, background .5s linear 1s
+            width         calc(200% - 2rem)
+          .time_bar
+            transition    width 5s linear 2s
+            width         100%
+    &.warning
+      .container_icon
+        &:before
+          background      var(--color-yellow)
+      .element
+        &.background
+          .color
+            background    var(--color-yellow)
+    .container_config
+      align-items         center
+      border-radius       0 3px 3px 0
+      bottom              0
+      cursor              pointer
+      display             flex
+      justify-content     center
+      left                100%
+      opacity             0
+      overflow            hidden
+      padding             1rem
+      position            absolute
+      top                 0
+      transform           translateX(-100%)
+      transition          transform .3s ease-in-out, opacity .2s ease-in-out
+      z-index             -2
+      > *
+        animation         rotate_feedback 5s linear infinite
+        z-index           2
+      &:after
+        background        rgba(255, 255, 255, 0.75)
+        transition        .15s ease-in-out .3s
+      &:before
+        background        var(--color-black)
+        transition        .3s ease-in-out
+      &:after
+      &:before
+        border-radius     50%
+        content           ''
+        display           block
+        height            0
+        position          absolute
+        width             0
+      &.hover
+      &:hover
+        &:after
+          height          50%
+          width           50%
+        &:before
+          height          150%
+          width           150%
+    .container_icon
+      position            relative
+      > *
+        z-index           10
+      &:before
+        background        var(--color-primary)
+        border-radius     50%
+        content           ''
+        left              50%
+        padding-top       1000%
+        position          absolute
+        top               50%
+        transform         translate(-50%, -50%) scale(2)
+        transition        .3s linear .25s
+        width             1000%
+        z-index           0
+    .element
+      &.background
+        border-radius     3px
+        bottom            0
+        height            100%
+        left              0
+        overflow          hidden
+        position          absolute
+        right             0
+        top               0
+        width             100%
+        z-index           -1
+        .color
+          background      var(--color-primary)
+          border-radius   50%
+          left            23px
+          padding-top     0
+          position        absolute
+          top             50%
+          transform       translate(-50%,-50%)
+          transition      .3s, background .3s linear 0s
+          width           0
+        .time_bar
+          background      var(--color-black)
+          bottom          0
+          height          100%
+          left            0
+          position        absolute
+          top             0
+          width           0%
+      &.message
+        margin            0 1rem
+  .container_feedback_config
+    bottom                calc(-100% + 16px)
+    left                  0
+    opacity               0
+    position              absolute
+    right                 0
+    transition            .3s
+    visibility            hidden
+    width                 calc(100% + 56px)
+    .feedback_config
+      background          var(--color-black)
+      border-radius       3px
+      color               white
+      &.open
+        > .value
+          opacity         0
+          transition      opacity .3s
+        .row_option
+          &:not(.open)
+            .label
+            .value
+              height      0
+              padding     0
+              transition  padding .3s linear, height .3s linear
+      .row_option
+        padding           0 32px
+        &.open
+          .option
+            padding       16px 0
+            height        50px
+            transition    padding .3s linear .3s, height .3s linear .3s
+        &
+        .option
+          display         flex
+          flex-wrap       wrap
+          justify-content space-between
+          width           100%
+        .option
+          height          0
+          overflow        hidden
+          padding         0
+          transition      padding .3s linear, height .3s linear
+        .row_option
+          padding         0
+        .label
+        .value
+          padding         16px 0
+          height          50px
+          overflow        hidden
+          transition      padding .3s linear .3s, height .3s linear .3s
+
+@keyframes rotate_feedback
+  from
+    transform rotate(0deg)
+  to
+    transform rotate(360deg)

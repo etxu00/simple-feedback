@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Feedback</title>
-	<style>
+	<link rel="stylesheet" href="feedback.css">
+	<!-- <style>
 		:root {
 			--color-primary: royalblue;
 			--color-secundary: #673ab7;
@@ -28,11 +29,11 @@
 			top: 1rem;
 			margin: 0 auto;
 		}
-
+	
 		.container_feedback_elements.right {
 			right: 1rem;
 		}
-
+	
 		.container_feedback_elements.left {
 			left: 1rem;
 		}
@@ -40,7 +41,6 @@
 		.container_feedback_elements {
 			position: fixed;
 		}
-
 		.feedback {
 			color: white;
 			padding: 1rem;
@@ -50,8 +50,7 @@
 			flex-direction: row;
 			position: relative;
 		}
-
-		.elment.background {
+		.element.background {
 			position: absolute;
 			width: 100%;
 			height: 100%;
@@ -63,7 +62,6 @@
 			right: 0;
 			bottom: 0;
 		}
-
 		.container_config {
 			position: absolute;
 			top: 0;
@@ -81,28 +79,23 @@
 			overflow: hidden;
 			border-radius: 0 3px 3px 0;
 		}
-
 		.container_config.hover,
 		.container_config:hover {
-
+	
 		}
-
 		.feedback.hover .container_config,
 		.feedback:hover .container_config {
 			opacity: 1;
 			transform: translateX(0%);
 			transition: transform .3s ease-in-out 1s;
 		}
-
-		.elment.message {
+		.element.message {
 			margin: 0 1rem;
 		}
-
 		.container_config > * {
 			animation: show 5s linear infinite;
 			z-index: 2;
 		}
-
 		@keyframes show {
 			from {
 				transform: rotate(0deg)
@@ -111,7 +104,6 @@
 				transform: rotate(360deg)
 			}
 		}
-
 		.container_config:after {
 			background: rgba(255, 255, 255, 0.75);
 			transition: .15s ease-in-out .3s;
@@ -120,7 +112,6 @@
 			background: var(--color-black);
 			transition: .3s ease-in-out;
 		}
-
 		.container_config:after,
 		.container_config:before {
 			content: '';
@@ -130,39 +121,32 @@
 			position: absolute;
 			border-radius: 50%;
 		}
-
 		.container_config.hover:after,
 		.container_config:hover:after {
 			width: 50%;
 			height: 50%;
 		}
-
 		.container_config.hover:before,
 		.container_config:hover:before {
 			width: 150%;
 			height: 150%;
 		}
-
-		.feedback.ok .elment.background .color,
+		.feedback.ok .element.background .color,
 		.feedback.ok .container_icon:before {
 			background: var(--color-green);
 		}
-
-		.feedback.error .elment.background .color,
+		.feedback.error .element.background .color,
 		.feedback.error .container_icon:before {
 			background: var(--color-red);
 		}
-
-		.feedback.info .elment.background .color,
+		.feedback.info .element.background .color,
 		.feedback.info .container_icon:before {
 			background: var(--color-blue);
 		}
-
-		.feedback.warning .elment.background .color,
+		.feedback.warning .element.background .color,
 		.feedback.warning .container_icon:before {
 			background: #ffc107;
 		}
-
 		.container_icon:before {
 			content: '';
 			position: absolute;
@@ -176,23 +160,19 @@
 			transition: .3s linear .25s;
 			background: var(--color-primary);
 		}
-
 		.container_icon {
 			position: relative;
 		}
-
 		.container_icon > * {
 			z-index: 10;
 		}
-
 		.feedback.on .container_icon:before {
 			width: 0;
 			padding-top: 0;
 			transform: translate(-50%, -50%) scale(1);
 			transition: .3s linear;
 		}
-
-		.elment.background .color {
+		.element.background .color {
 			content: '';
 			width: 0;
 			padding-top: 0;
@@ -204,26 +184,22 @@
 			left: 23px;
 			transition: .3s, background .3s linear 0s;
 		}
-
-		.feedback.on .elment.background .color {
+		.feedback.on .element.background .color {
 			width: calc(200% - 2rem);
 			padding-top: calc(200% - 2rem);
 			background: #424242;
 			transition: width .3s linear .15s, padding-top .3s linear .15s, background .5s linear 1s;
 		}
-
-		.feedback.on .elment.background .time_bar {
+		.feedback.on .element.background .time_bar {
 			width: 100%;
 			transition: width 5s linear 2s;
 		}
-
-		.feedback.hover .elment.background .time_bar,
-		.feedback:hover .elment.background .time_bar {
+		.feedback.hover .element.background .time_bar,
+		.feedback:hover .element.background .time_bar {
 			width: 100% !important;
 			transition: none !important;
 		}
-
-		.elment.background .time_bar {
+		.element.background .time_bar {
 			content: '';
 			position: absolute;
 			width: 0%;
@@ -233,7 +209,6 @@
 			left: 0;
 			bottom: 0;
 		}
-
 		.feedback.on.off {
 			opacity: 1;
 			transition: .3s cubic-bezier(0, -1.3, 0.91, 0.61);
@@ -243,9 +218,7 @@
 		.feedback:hover .container_config:hover + .background {
 			border-radius: 3px 0 0 3px;
 		}
-
 		/*CONFIG*/
-
 		.container_feedback_config {
 		    position: absolute;
 		    bottom: calc(-100% + 16px);
@@ -256,19 +229,16 @@
 		    transition: .3s;
 		    visibility: hidden;
 		}
-
 		.feedback.hover + .container_feedback_config {
 		    bottom: calc(100% + 16px);
 		    opacity: 1;
 		    visibility: visible;
 		}
-
 		.feedback_config {
 		    color: white;
 		    background: var(--color-black);
 		    border-radius: 3px;
 		}
-
 		.row_option, .row_option .option {
 		    display: flex;
 		    justify-content: space-between;
@@ -290,14 +260,11 @@
 			overflow: hidden;
 			transition: padding .3s linear, height .3s linear;
 		}
-
-
 		.row_option.open .option {
 		    padding: 16px 0;
 		    height: 50px;
 		    transition: padding .3s linear .3s, height .3s linear .3s;
 		}
-
 		.row_option .label,
 		.row_option .value {
 		    padding: 16px 0;
@@ -305,14 +272,17 @@
 		    overflow: hidden;
 	        transition: padding .3s linear .3s, height .3s linear .3s;
 		}
-
 		.feedback_config.open .row_option:not(.open) .label,
 		.feedback_config.open .row_option:not(.open) .value {
 		    padding: 0;
 		    height: 0;
 	        transition: padding .3s linear, height .3s linear;
 		}
-	</style>
+		.row_option.open > .value {
+		    opacity: 0;
+		    transition: opacity .3s;
+		}
+	</style> -->
 </head>
 <body>
 	<button type="button" id="btn_show">Ver</button>
@@ -327,7 +297,7 @@
 			<div class="container_icon">
 				<img src="https://img.icons8.com/material-rounded/24/ffffff/checkmark.png">
 			</div>
-			<div class="elment message">
+			<div class="element message">
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 			</div>
 			<div class="container_closed">
@@ -336,7 +306,7 @@
 			<div id="show_config" class="container_config">
 				<img src="https://img.icons8.com/material-rounded/24/212121/settings.png">
 			</div>
-			<div class="elment background">
+			<div class="element background">
 				<div class="status"></div>
 				<div class="color"></div>
 				<div class="time_bar"></div>
@@ -400,7 +370,7 @@
 										'<div class="container_icon">'+
 											'<img src="https://img.icons8.com/material-rounded/24/ffffff/checkmark.png">'+
 										'</div>'+
-										'<div class="elment message">'+
+										'<div class="element message">'+
 											'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'+
 										'</div>'+
 										'<div class="container_closed">'+
@@ -409,7 +379,7 @@
 										'<div class="container_config">'+
 											'<img src="https://img.icons8.com/material-rounded/24/212121/settings.png">'+
 										'</div>'+
-										'<div class="elment background">'+
+										'<div class="element background">'+
 											'<div class="status"></div>'+
 											'<div class="color"></div>'+
 											'<div class="time_bar"></div>'+
