@@ -293,7 +293,7 @@
 	<button type="button" id="btn_ok">ok</button>
 
 	<div class="container_feedback_elements bottom left">
-		<div id="feedback" class="feedback">
+		<div id="feedback" class="feedback on">
 			<div class="container_icon">
 				<img src="https://img.icons8.com/material-rounded/24/ffffff/checkmark.png">
 			</div>
@@ -313,15 +313,40 @@
 			</div>
 		</div>
 		<div class="container_feedback_config">
+			<div id="feedback_config_title" class="feedback_config_title">
+				<span class="icon"><img src="https://img.icons8.com/material-rounded/24/212121/settings.png"></span>
+				<span class="title">Preferencias</span>
+			</div>
 			<div id="feedback_config" class="feedback_config">
 				<div class="row_option">
-					<div class="label">Tamaño</div>
-					<div class="value">Mediano</div>
+					<div class="label">Aspecto</div>
+					<div class="value">Nocturno</div>
 					<div class="row_option">
-						<div class="option _option" data-value="1">Chico</div>
-						<div class="option _option" data-value="2">Mediano</div>
-						<div class="option _option" data-value="3">Grande</div>
-						<div class="option _option" data-value="4">Bárbaro</div>
+						<div class="option _option" data-value="1">Claro</div>
+						<div class="option _option hover" data-value="2">Nocturno</div>
+					</div>
+				</div>
+				<div class="row_option">
+					<div class="label">Colores</div>
+					<div class="value"></div>
+					<div class="row_option">
+						<div class="option _option" data-value="1">Default <span class="code_color">4169e1</span></div>
+						<div class="option _option" data-value="2">Error <span class="code_color">E53935</span></div>
+						<div class="option _option" data-value="3">Info <span class="code_color">1E88E5</span></div>
+						<div class="option _option" data-value="4">Warning <span class="code_color">ffc107</span></div>
+						<div class="option _option" data-value="5">Ok <span class="code_color">4CAF50</span></div>
+					</div>
+				</div>
+				<div class="row_option">
+					<div class="label">Modo</div>
+					<div class="value">Discreto</div>
+					<div class="row_option">
+						<div class="option _option" data-value="1">Aviso</div>
+						<div class="option _option hover" data-value="2">Discreto</div>
+						<div class="option _option" data-value="3">Llamativo</div>
+						<div class="option _option" data-value="4">Logros</div>
+						<div class="option _option" data-value="5">Modal</div>
+						<div class="option _option" data-value="6">Notificación</div>
 					</div>
 				</div>
 				<div class="row_option">
@@ -334,26 +359,19 @@
 						<div class="option _option" data-value="4">Centro - izquierda</div>
 						<div class="option _option" data-value="5">Centro - centro</div>
 						<div class="option _option" data-value="6">Centro - derecha</div>
-						<div class="option _option" data-value="7">Inferior - izquierda</div>
+						<div class="option _option hover" data-value="7">Inferior - izquierda</div>
 						<div class="option _option" data-value="8">Inferior - centro</div>
 						<div class="option _option" data-value="9">Inferior - derecha</div>
 					</div>
 				</div>
 				<div class="row_option">
-					<div class="label">Aspecto</div>
-					<div class="value">Nocturno</div>
+					<div class="label">Tamaño</div>
+					<div class="value">Mediano</div>
 					<div class="row_option">
-						<div class="option _option" data-value="1">Claro</div>
-						<div class="option _option" data-value="2">Nocturno</div>
-					</div>
-				</div>
-				<div class="row_option">
-					<div class="label">Modo</div>
-					<div class="value">Llamativo</div>
-					<div class="row_option">
-						<div class="option _option" data-value="1">Discreto</div>
-						<div class="option _option" data-value="2">Llamativo</div>
-						<div class="option _option" data-value="3">Logros</div>
+						<div class="option _option" data-value="1">Chico</div>
+						<div class="option _option hover" data-value="2">Mediano</div>
+						<div class="option _option" data-value="3">Grande</div>
+						<div class="option _option" data-value="4">Bárbaro</div>
 					</div>
 				</div>
 				<div class="row_option default">

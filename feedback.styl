@@ -36,10 +36,16 @@ body
     padding               1rem
     position              relative
     &.hover
+      .container_closed
+        transform     translateX(calc(200% + 8px));
       + .container_feedback_config
         bottom            calc(100% + 16px)
         opacity           1
         visibility        visible
+        &
+          .feedback_config_title
+            transform     translateY(0)
+            transition    transform .15s ease-in-out 0
     &.hover
     &:hover
       .container_config
@@ -111,6 +117,8 @@ body
         &.background
           .color
             background    var(--color-yellow)
+    .container_closed
+      transition          transform .15s ease-in-out (.3 + .15)s
     .container_config
       align-items         center
       border-radius       0 3px 3px 0
@@ -127,12 +135,16 @@ body
       transform           translateX(-100%)
       transition          transform .3s ease-in-out, opacity .2s ease-in-out
       z-index             -2
+      img
+        transition      margin .15s ease-in-out .3s
       > *
         animation         rotate_feedback 5s linear infinite
         z-index           2
       &:after
         background        rgba(255, 255, 255, 0.75)
         transition        .15s ease-in-out .3s
+        width             30px
+        height            30px
       &:before
         background        var(--color-black)
         transition        .3s ease-in-out
@@ -145,10 +157,16 @@ body
         position          absolute
         width             0
       &.hover
+        &:after
+          transform       translateY(calc(-100% - 30px))
+          transition      .13s ease-in-out .3s
+        img
+          margin          0 0 94px 0
+      &.hover
       &:hover
         &:after
-          height          50%
-          width           50%
+          height          30px
+          width           30px
         &:before
           height          150%
           width           150%
@@ -214,7 +232,7 @@ body
       border-radius       3px
       color               white
       &.open
-        > .value
+        .value
           opacity         0
           transition      opacity .3s
         .row_option
@@ -234,6 +252,7 @@ body
         &
         .option
           display         flex
+          cursor          pointer
           flex-wrap       wrap
           justify-content space-between
           width           100%
@@ -242,6 +261,31 @@ body
           overflow        hidden
           padding         0
           transition      padding .3s linear, height .3s linear
+          &:after
+            border-bottom 2px solid
+            border-radius 2px
+            border-right  2px solid
+            content       ''
+            height        16px
+            opacity       0
+            transform-origin top
+            transform     rotate(45deg) translate(110%, -110%)
+            transition    transform .15s ease-in-out, opacity .15s ease-in-out
+            width         8px
+          &.hover
+            &:after
+              opacity     1 !important
+          &:hover
+          &.hover
+            &:after
+              opacity     0.25
+              transform   rotate(45deg) translate(0%, 0%)
+          .code_color
+            text-transform uppercase
+            &:before
+              content     '#'
+              margin      0 3px 0 0
+              opacity     .2
         .row_option
           padding         0
         .label
@@ -250,6 +294,16 @@ body
           height          50px
           overflow        hidden
           transition      padding .3s linear .3s, height .3s linear .3s
+    .feedback_config_title
+      align-items         center
+      display             flex
+      justify-content     start
+      padding             0 8px
+      transform           translateY(100%)
+      transition          transform .15s ease-in-out .3s
+      span
+        font-size         18px
+        margin            0 0 0 8px
 
 @keyframes rotate_feedback
   from

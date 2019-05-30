@@ -67,12 +67,31 @@ body {
   padding: 1rem;
   position: relative;
 }
+.container_feedback_elements .feedback.hover .container_closed {
+  -webkit-transform: translateX(calc(200% + 8px));
+  -moz-transform: translateX(calc(200% + 8px));
+  -o-transform: translateX(calc(200% + 8px));
+  -ms-transform: translateX(calc(200% + 8px));
+  transform: translateX(calc(200% + 8px));
+}
 .container_feedback_elements .feedback.hover + .container_feedback_config {
   bottom: calc(100% + 16px);
   opacity: 1;
   -ms-filter: none;
   filter: none;
   visibility: visible;
+}
+.container_feedback_elements .feedback.hover + .container_feedback_config .feedback_config_title {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -o-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+  -webkit-transition: -webkit-transform 0.15s ease-in-out 0;
+  -moz-transition: -moz-transform 0.15s ease-in-out 0;
+  -o-transition: -o-transform 0.15s ease-in-out 0;
+  -ms-transition: -ms-transform 0.15s ease-in-out 0;
+  transition: transform 0.15s ease-in-out 0;
 }
 .container_feedback_elements .feedback.hover .container_config,
 .container_feedback_elements .feedback:hover .container_config {
@@ -184,6 +203,13 @@ body {
 .container_feedback_elements .feedback.warning .element.background .color {
   background: var(--color-yellow);
 }
+.container_feedback_elements .feedback .container_closed {
+  -webkit-transition: -webkit-transform 0.15s ease-in-out 0.45s;
+  -moz-transition: -moz-transform 0.15s ease-in-out 0.45s;
+  -o-transition: -o-transform 0.15s ease-in-out 0.45s;
+  -ms-transition: -ms-transform 0.15s ease-in-out 0.45s;
+  transition: transform 0.15s ease-in-out 0.45s;
+}
 .container_feedback_elements .feedback .container_config {
   -webkit-box-align: center;
   -moz-box-align: center;
@@ -226,6 +252,13 @@ body {
   transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
   z-index: -2;
 }
+.container_feedback_elements .feedback .container_config img {
+  -webkit-transition: margin 0.15s ease-in-out 0.3s;
+  -moz-transition: margin 0.15s ease-in-out 0.3s;
+  -o-transition: margin 0.15s ease-in-out 0.3s;
+  -ms-transition: margin 0.15s ease-in-out 0.3s;
+  transition: margin 0.15s ease-in-out 0.3s;
+}
 .container_feedback_elements .feedback .container_config > * {
   -webkit-animation: rotate_feedback 5s linear infinite;
   -moz-animation: rotate_feedback 5s linear infinite;
@@ -241,6 +274,8 @@ body {
   -o-transition: 0.15s ease-in-out 0.3s;
   -ms-transition: 0.15s ease-in-out 0.3s;
   transition: 0.15s ease-in-out 0.3s;
+  width: 30px;
+  height: 30px;
 }
 .container_feedback_elements .feedback .container_config:before {
   background: var(--color-black);
@@ -259,10 +294,25 @@ body {
   position: absolute;
   width: 0;
 }
+.container_feedback_elements .feedback .container_config.hover:after {
+  -webkit-transform: translateY(calc(-100% - 30px));
+  -moz-transform: translateY(calc(-100% - 30px));
+  -o-transform: translateY(calc(-100% - 30px));
+  -ms-transform: translateY(calc(-100% - 30px));
+  transform: translateY(calc(-100% - 30px));
+  -webkit-transition: 0.13s ease-in-out 0.3s;
+  -moz-transition: 0.13s ease-in-out 0.3s;
+  -o-transition: 0.13s ease-in-out 0.3s;
+  -ms-transition: 0.13s ease-in-out 0.3s;
+  transition: 0.13s ease-in-out 0.3s;
+}
+.container_feedback_elements .feedback .container_config.hover img {
+  margin: 0 0 94px 0;
+}
 .container_feedback_elements .feedback .container_config.hover:after,
 .container_feedback_elements .feedback .container_config:hover:after {
-  height: 50%;
-  width: 50%;
+  height: 30px;
+  width: 30px;
 }
 .container_feedback_elements .feedback .container_config.hover:before,
 .container_feedback_elements .feedback .container_config:hover:before {
@@ -360,7 +410,7 @@ body {
   border-radius: 3px;
   color: #fff;
 }
-.container_feedback_elements .container_feedback_config .feedback_config.open > .value {
+.container_feedback_elements .container_feedback_config .feedback_config.open .value {
   opacity: 0;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
@@ -400,6 +450,7 @@ body {
   display: -ms-flexbox;
   display: box;
   display: flex;
+  cursor: pointer;
   -webkit-box-lines: multiple;
   -moz-box-lines: multiple;
   -o-box-lines: multiple;
@@ -424,6 +475,58 @@ body {
   -ms-transition: padding 0.3s linear, height 0.3s linear;
   transition: padding 0.3s linear, height 0.3s linear;
 }
+.container_feedback_elements .container_feedback_config .feedback_config .row_option .option:after {
+  border-bottom: 2px solid;
+  border-radius: 2px;
+  border-right: 2px solid;
+  content: '';
+  height: 16px;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -webkit-transform-origin: top;
+  -moz-transform-origin: top;
+  -o-transform-origin: top;
+  -ms-transform-origin: top;
+  transform-origin: top;
+  -webkit-transform: rotate(45deg) translate(110%, -110%);
+  -moz-transform: rotate(45deg) translate(110%, -110%);
+  -o-transform: rotate(45deg) translate(110%, -110%);
+  -ms-transform: rotate(45deg) translate(110%, -110%);
+  transform: rotate(45deg) translate(110%, -110%);
+  -webkit-transition: -webkit-transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
+  -moz-transition: -moz-transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
+  -o-transition: -o-transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
+  -ms-transition: -ms-transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
+  transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
+  width: 8px;
+}
+.container_feedback_elements .container_feedback_config .feedback_config .row_option .option.hover:after {
+  opacity: 1 !important;
+  -ms-filter: none !important;
+  filter: none !important;
+}
+.container_feedback_elements .container_feedback_config .feedback_config .row_option .option:hover:after,
+.container_feedback_elements .container_feedback_config .feedback_config .row_option .option.hover:after {
+  opacity: 0.25;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=25)";
+  filter: alpha(opacity=25);
+  -webkit-transform: rotate(45deg) translate(0%, 0%);
+  -moz-transform: rotate(45deg) translate(0%, 0%);
+  -o-transform: rotate(45deg) translate(0%, 0%);
+  -ms-transform: rotate(45deg) translate(0%, 0%);
+  transform: rotate(45deg) translate(0%, 0%);
+}
+.container_feedback_elements .container_feedback_config .feedback_config .row_option .option .code_color {
+  text-transform: uppercase;
+}
+.container_feedback_elements .container_feedback_config .feedback_config .row_option .option .code_color:before {
+  content: '#';
+  margin: 0 3px 0 0;
+  opacity: 0.2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: alpha(opacity=20);
+}
 .container_feedback_elements .container_feedback_config .feedback_config .row_option .row_option {
   padding: 0;
 }
@@ -437,6 +540,41 @@ body {
   -o-transition: padding 0.3s linear 0.3s, height 0.3s linear 0.3s;
   -ms-transition: padding 0.3s linear 0.3s, height 0.3s linear 0.3s;
   transition: padding 0.3s linear 0.3s, height 0.3s linear 0.3s;
+}
+.container_feedback_elements .container_feedback_config .feedback_config_title {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -o-box-pack: start;
+  -ms-flex-pack: start;
+  -webkit-justify-content: start;
+  justify-content: start;
+  padding: 0 8px;
+  -webkit-transform: translateY(100%);
+  -moz-transform: translateY(100%);
+  -o-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  transform: translateY(100%);
+  -webkit-transition: -webkit-transform 0.15s ease-in-out 0.3s;
+  -moz-transition: -moz-transform 0.15s ease-in-out 0.3s;
+  -o-transition: -o-transform 0.15s ease-in-out 0.3s;
+  -ms-transition: -ms-transform 0.15s ease-in-out 0.3s;
+  transition: transform 0.15s ease-in-out 0.3s;
+}
+.container_feedback_elements .container_feedback_config .feedback_config_title span {
+  font-size: 18px;
+  margin: 0 0 0 8px;
 }
 @-moz-keyframes rotate_feedback {
   from {
